@@ -73,10 +73,10 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawRectangle(left_bottom, right_top, color, ctx) {
-        drawLine((left_bottom.x, left_bottom.y), (left_bottom.x, right_top.y), color, ctx);
-        drawLine((left_bottom.x, right_top.y), (right_top.x, right_top.y), color, ctx);
-        drawLine((right_top.x, right_top.y), (right_top.x, left_bottom.y), color, ctx);
-        drawLine((right_top.x, left_bottom.y), (left_bottom.x, left_bottom.y), color, ctx);
+        this.drawLine((left_bottom.x, left_bottom.y), (left_bottom.x, right_top.y), color, ctx);
+        this.drawLine((left_bottom.x, right_top.y), (right_top.x, right_top.y), color, ctx);
+        this.drawLine((right_top.x, right_top.y), (right_top.x, left_bottom.y), color, ctx);
+        this.drawLine((right_top.x, left_bottom.y), (left_bottom.x, left_bottom.y), color, ctx);
     }
 
     // center:       object ({x: __, y: __})
