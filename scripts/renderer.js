@@ -47,7 +47,7 @@ class Renderer {
     // ctx:          canvas context
     drawSlide0(ctx) {
         //draw rectangle here
-        ctx.drawRectangle((200,200), (400, 400), [0, 0, 255, 255], ctx);
+        drawRectangle((200,200), (400, 400), [0, 0, 255, 255], ctx);
     }
 
     // ctx:          canvas context
@@ -73,9 +73,9 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawRectangle(left_bottom, right_top, color, ctx) {
-        ctx.drawLine((left_bottom.x, left_bottom.y), (left_bottom.x, right_top.y), color, ctx);
-        ctx.drawLine((left_bottom.x, right_top.y), (right_top.x, right_top.y), color, ctx);
-        ctx.drawLine((right_top.x, right_top.y), (right_top.x, left_bottom.y), color, ctx);
+        drawLine((left_bottom.x, left_bottom.y), (left_bottom.x, right_top.y), color, ctx);
+        drawLine((left_bottom.x, right_top.y), (right_top.x, right_top.y), color, ctx);
+        drawLine((right_top.x, right_top.y), (right_top.x, left_bottom.y), color, ctx);
         ctx.drawLine((right_top.x, left_bottom.y), (left_bottom.x, left_bottom.y), color, ctx);
     }
 
