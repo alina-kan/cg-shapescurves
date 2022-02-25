@@ -46,22 +46,26 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide0(ctx) {
-        
+        //draw rectangle here
+        this.drawRectangle((1, 2), (400, 500), '#000000', ctx);
     }
 
     // ctx:          canvas context
     drawSlide1(ctx) {
-
+        //draw circle
+        this.drawCircle();
     }
 
     // ctx:          canvas context
     drawSlide2(ctx) {
-
+        //draw curve
+        this.drawBezierCurve();
     }
 
     // ctx:          canvas context
     drawSlide3(ctx) {
-
+        //draw name
+        
     }
 
     // left_bottom:  object ({x: __, y: __})
@@ -69,7 +73,7 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawRectangle(left_bottom, right_top, color, ctx) {
-        
+        this.drawLine(left_bottom, right_top, color, ctx);
     }
 
     // center:       object ({x: __, y: __})
