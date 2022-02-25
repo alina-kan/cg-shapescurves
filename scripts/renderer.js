@@ -47,7 +47,7 @@ class Renderer {
     // ctx:          canvas context
     drawSlide0(ctx) {
         //draw rectangle here
-        this.drawRectangle((1, 2), (400, 500), '#000000', ctx);
+        this.drawRectangle((1, 2), (400, 500), "Green", ctx);
     }
 
     // ctx:          canvas context
