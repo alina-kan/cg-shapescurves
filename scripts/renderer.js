@@ -47,7 +47,7 @@ class Renderer {
     // ctx:          canvas context
     drawSlide0(ctx) {
         //draw rectangle here
-        drawRectangle((0,0), (400, 500), [0, 0, 255, 255], ctx);
+        drawRectangle((200,200), (400, 400), [0, 0, 255, 255], ctx);
     }
 
     // ctx:          canvas context
