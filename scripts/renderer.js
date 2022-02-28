@@ -60,7 +60,7 @@ class Renderer {
     // ctx:          canvas context
     drawSlide2(ctx) {
         //draw curve
-        this.drawBezierCurve();
+        this.drawBezierCurve({x: 200, y: 200}, {x: 200, y: 500}, {x: 500, y: 500}, {x: 500, y: 200}, [102, 51, 153, 255], ctx);
     }
 
     // ctx:          canvas context
@@ -95,12 +95,16 @@ class Renderer {
         let pt1 = new Object({x: (center.x + radius), y: (center.y)});
         let pt0 = new Object({x: pt1.x, y: pt1.y});
         let pt_holder = [];
+
         for (let i = 0; i < this.num_curve_sections; i++){
             //determine where to draw lines
             radians = radians + ((Math.PI*2)/this.num_curve_sections);
             x = center.x + Math.round(radius * (Math.cos(radians)));
             y = center.y + Math.round(radius * (Math.sin(radians)));
-            pt_holder.push({x: x, y: y});
+
+            let point = new Object({x: x, y: y});
+            pt_holder.push(point);
+
             pt1.x = x;
             pt1.y = y;        
             this.drawLine(pt0, pt1, color, ctx);
@@ -108,20 +112,14 @@ class Renderer {
             pt0.y = pt1.y;
         }
         console.log(pt_holder);
-        
-        let point = {x: 0, y: 0};
-        for (let i = 0; i < this.num_curve_sections; i++){
-            point = pt_holder.pop();
-            this.drawLine(point, point, color, ctx);
-        }
-        /*
-        if () {
-            let point = ptHolder.pop();
-            for (let i = 0; i < this.num_curve_sections; i++){
-                this.drawLine(point, point, color, ctx);
-                point = ptHolder.pop();
+        if (this.show_points){
+            this.show_points = false;
+            for (let i = 0; i < pt_holder.length; i++){
+                let pt_x = pt_holder[i].x;
+                let pt_y = pt_holder[i].y;
+                this.drawRectangle({x: pt_x-1, y: pt_y-1}, {x: pt_x+1, y: pt_y+1}, [255, 0, 0, 255], ctx);
             }
-        } */
+        }
     }
 
     // pt0:          object ({x: __, y: __})
@@ -131,7 +129,45 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawBezierCurve(pt0, pt1, pt2, pt3, color, ctx) {
-        
+        let x = 0;
+        let y = 0;
+        let t = 0.0;
+        let drawPt0 = {x: pt0.x, y: pt0.y};
+        let drawPt1 = {x: 0, y: 0};
+        let pt_holder = [{x: pt0.x, y: pt0.y}];
+
+        for (let i = 0; i < this.num_curve_sections; i++){
+            t = t + 1/this.num_curve_sections;
+            x = Math.round(
+                (Math.pow((1 - t), 3) * pt0.x) +
+                (3 * Math.pow((1-t), 2) * t * pt1.x) +
+                (3 * (1 - t) * Math.pow(t, 2) * pt2.x) +
+                (Math.pow(t, 3) * pt3.x)
+            );
+            y = Math.round(
+                (Math.pow((1 - t), 3) * pt0.y) +
+                (3 * Math.pow((1-t), 2) * t * pt1.y) +
+                (3 * (1 - t) * Math.pow(t, 2) * pt2.y) +
+                (Math.pow(t, 3) * pt3.y)
+            );
+            
+            let point = new Object({x: x, y: y});
+            pt_holder.push(point);
+
+            drawPt1.x = x;
+            drawPt1.y = y;
+            this.drawLine(drawPt0, drawPt1, color, ctx);
+            drawPt0.x = drawPt1.x;
+            drawPt0.y = drawPt1.y;
+        }
+        if (this.show_points){
+            this.show_points = false;
+            for (let i = 0; i < pt_holder.length; i++){
+                let pt_x = pt_holder[i].x;
+                let pt_y = pt_holder[i].y;
+                this.drawRectangle({x: pt_x-1, y: pt_y-1}, {x: pt_x+1, y: pt_y+1}, [255, 0, 0, 255], ctx);
+            }
+        }
     }
 
     // pt0:          object ({x: __, y: __})
