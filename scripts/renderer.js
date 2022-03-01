@@ -47,26 +47,52 @@ class Renderer {
     // ctx:          canvas context
     drawSlide0(ctx) {
         //draw rectangle here
-        //this.drawLine({x: 0, y: 10}, {x: 20, y: 45},[0, 255, 255, 255], ctx);
-        this.drawRectangle({x: 200, y: 100}, {x: 400, y: 500}, [102, 51, 153, 255], ctx);
+        this.drawRectangle({x: 100, y: 100}, {x: 300, y: 550}, [102, 51, 153, 255], ctx);
+        this.drawRectangle({x: 400, y: 450}, {x: 700, y: 550}, [179, 55, 176, 255], ctx);
+        this.drawRectangle({x: 400, y: 100}, {x: 700, y: 400}, [36, 43, 173, 255], ctx);
     }
 
     // ctx:          canvas context
     drawSlide1(ctx) {
         //draw circle
-        this.drawCircle({x: 400, y: 300}, 100, [102, 51, 153, 255], ctx);
+        this.drawCircle({x: 400, y: 325}, 150, [156, 101, 0, 255], ctx);
+        
     }
 
     // ctx:          canvas context
     drawSlide2(ctx) {
         //draw curve
-        this.drawBezierCurve({x: 200, y: 200}, {x: 200, y: 500}, {x: 500, y: 500}, {x: 500, y: 200}, [102, 51, 153, 255], ctx);
+        this.drawBezierCurve({x: 100, y: 200}, {x: 100, y: 400}, {x: 400, y: 400}, {x: 400, y: 200}, [102, 51, 153, 255], ctx);
+        this.drawBezierCurve({x: 600, y: 100}, {x: 500, y: 100}, {x: 400, y: 600}, {x: 675, y: 500}, [102, 51, 153, 255], ctx);
     }
 
     // ctx:          canvas context
     drawSlide3(ctx) {
         //draw name
-        
+        //A
+        this.drawLine({x: 100, y: 100}, {x: 175, y: 400}, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 175, y: 400}, {x: 250, y: 100}, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 137, y: 250}, {x: 212, y: 250}, [102, 51, 153, 255], ctx);
+
+        //l
+        this.drawLine({x: 275, y: 350}, {x: 275, y: 100}, [102, 51, 153, 255], ctx);
+
+        //i
+        this.drawLine({x: 300, y: 250}, {x: 300, y: 100}, [102, 51, 153, 255], ctx);
+        this.drawCircle({x: 300, y: 275}, 3, [102, 51, 153, 255], ctx);
+
+        //n
+        this.drawLine({x: 325, y: 250}, {x: 325, y: 100}, [102, 51, 153, 255], ctx);
+        this.drawBezierCurve({x: 325, y: 200}, {x: 325, y: 270}, {x: 400, y: 270}, {x: 400, y: 200}, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 400, y: 200}, {x: 400, y: 100}, [102, 51, 153, 255], ctx);
+
+        //a - most complicated letter :/
+        this.drawBezierCurve({x: 475, y: 250}, {x: 400, y: 260}, {x: 400, y: 50}, {x: 487, y: 110}, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 475, y: 250}, {x: 498, y: 230}, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 487, y: 110}, {x: 498, y: 120}, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 498, y: 240}, {x: 498, y: 120}, [102, 51, 153, 255], ctx);
+        this.drawBezierCurve({x: 498, y: 120}, {x: 498, y: 100}, {x: 525, y: 100}, {x: 525, y: 105}, [102, 51, 153, 255], ctx);
+
     }
 
     // left_bottom:  object ({x: __, y: __})
@@ -74,6 +100,7 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawRectangle(left_bottom, right_top, color, ctx) {
+        //create other corners
         let left_top = {x: left_bottom.x, y: right_top.y};
         let right_bottom = {x: right_top.x, y: left_bottom.y};
 
@@ -111,13 +138,16 @@ class Renderer {
             pt0.x = pt1.x;
             pt0.y = pt1.y;
         }
-        console.log(pt_holder);
+
+        //console.log(pt_holder);
+
         if (this.show_points){
             this.show_points = false;
             for (let i = 0; i < pt_holder.length; i++){
                 let pt_x = pt_holder[i].x;
                 let pt_y = pt_holder[i].y;
-                this.drawRectangle({x: pt_x-1, y: pt_y-1}, {x: pt_x+1, y: pt_y+1}, [255, 0, 0, 255], ctx);
+                this.drawRectangle({x: pt_x-3, y: pt_y-3}, {x: pt_x+3, y: pt_y+3}, [255, 0, 0, 255], ctx);
+                this.show_points = true;
             }
         }
     }
@@ -160,12 +190,18 @@ class Renderer {
             drawPt0.x = drawPt1.x;
             drawPt0.y = drawPt1.y;
         }
+
+        //console.log(pt_holder);
+
         if (this.show_points){
             this.show_points = false;
             for (let i = 0; i < pt_holder.length; i++){
                 let pt_x = pt_holder[i].x;
                 let pt_y = pt_holder[i].y;
-                this.drawRectangle({x: pt_x-1, y: pt_y-1}, {x: pt_x+1, y: pt_y+1}, [255, 0, 0, 255], ctx);
+                this.drawRectangle({x: pt_x-3, y: pt_y-3}, {x: pt_x+3, y: pt_y+3}, [255, 0, 0, 255], ctx);
+                //setting back to true will allow for the points to continue
+                // being shown when slider moves
+                this.show_points = true;
             }
         }
     }
