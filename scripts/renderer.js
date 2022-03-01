@@ -63,35 +63,35 @@ class Renderer {
     drawSlide2(ctx) {
         //draw curve
         this.drawBezierCurve({x: 100, y: 200}, {x: 100, y: 400}, {x: 400, y: 400}, {x: 400, y: 200}, [102, 51, 153, 255], ctx);
-        this.drawBezierCurve({x: 600, y: 100}, {x: 500, y: 100}, {x: 400, y: 600}, {x: 675, y: 500}, [102, 51, 153, 255], ctx);
+        this.drawBezierCurve({x: 600, y: 100}, {x: 500, y: 100}, {x: 400, y: 600}, {x: 675, y: 500}, [27, 122, 121, 255], ctx);
     }
 
     // ctx:          canvas context
     drawSlide3(ctx) {
         //draw name
         //A
-        this.drawLine({x: 100, y: 100}, {x: 175, y: 400}, [102, 51, 153, 255], ctx);
-        this.drawLine({x: 175, y: 400}, {x: 250, y: 100}, [102, 51, 153, 255], ctx);
-        this.drawLine({x: 137, y: 250}, {x: 212, y: 250}, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 100, y: 100}, {x: 175, y: 400}, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 175, y: 400}, {x: 250, y: 100}, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 137, y: 250}, {x: 212, y: 250}, [151, 82, 168, 255], ctx);
 
         //l
-        this.drawLine({x: 275, y: 350}, {x: 275, y: 100}, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 275, y: 350}, {x: 275, y: 100}, [151, 82, 168, 255], ctx);
 
         //i
-        this.drawLine({x: 300, y: 250}, {x: 300, y: 100}, [102, 51, 153, 255], ctx);
-        this.drawCircle({x: 300, y: 275}, 3, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 300, y: 250}, {x: 300, y: 100}, [151, 82, 168, 255], ctx);
+        this.drawCircle({x: 300, y: 275}, 3, [151, 82, 168, 255], ctx);
 
         //n
-        this.drawLine({x: 325, y: 250}, {x: 325, y: 100}, [102, 51, 153, 255], ctx);
-        this.drawBezierCurve({x: 325, y: 200}, {x: 325, y: 270}, {x: 400, y: 270}, {x: 400, y: 200}, [102, 51, 153, 255], ctx);
-        this.drawLine({x: 400, y: 200}, {x: 400, y: 100}, [102, 51, 153, 255], ctx);
+        this.drawLine({x: 325, y: 250}, {x: 325, y: 100}, [151, 82, 168, 255], ctx);
+        this.drawBezierCurve({x: 325, y: 200}, {x: 325, y: 270}, {x: 400, y: 270}, {x: 400, y: 200}, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 400, y: 200}, {x: 400, y: 100}, [151, 82, 168, 255], ctx);
 
         //a - most complicated letter :/
-        this.drawBezierCurve({x: 475, y: 250}, {x: 400, y: 260}, {x: 400, y: 50}, {x: 487, y: 110}, [102, 51, 153, 255], ctx);
-        this.drawLine({x: 475, y: 250}, {x: 498, y: 230}, [102, 51, 153, 255], ctx);
-        this.drawLine({x: 487, y: 110}, {x: 498, y: 120}, [102, 51, 153, 255], ctx);
-        this.drawLine({x: 498, y: 240}, {x: 498, y: 120}, [102, 51, 153, 255], ctx);
-        this.drawBezierCurve({x: 498, y: 120}, {x: 498, y: 100}, {x: 525, y: 100}, {x: 525, y: 105}, [102, 51, 153, 255], ctx);
+        this.drawBezierCurve({x: 475, y: 250}, {x: 400, y: 260}, {x: 400, y: 50}, {x: 487, y: 110}, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 475, y: 250}, {x: 498, y: 230}, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 487, y: 110}, {x: 498, y: 120}, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 498, y: 240}, {x: 498, y: 120}, [151, 82, 168, 255], ctx);
+        this.drawBezierCurve({x: 498, y: 120}, {x: 498, y: 100}, {x: 525, y: 100}, {x: 525, y: 105}, [151, 82, 168, 255], ctx);
 
     }
 
@@ -195,9 +195,13 @@ class Renderer {
 
         if (this.show_points){
             this.show_points = false;
+            //control points
+            this.drawRectangle({x: pt1.x-3, y: pt1.y-3}, {x: pt1.x+3, y: pt1.y+3}, [45, 194, 37, 255], ctx);
+            this.drawRectangle({x: pt2.x-3, y: pt2.y-3}, {x: pt2.x+3, y: pt2.y+3}, [45, 194, 37, 255], ctx);
             for (let i = 0; i < pt_holder.length; i++){
                 let pt_x = pt_holder[i].x;
                 let pt_y = pt_holder[i].y;
+                //curve points
                 this.drawRectangle({x: pt_x-3, y: pt_y-3}, {x: pt_x+3, y: pt_y+3}, [255, 0, 0, 255], ctx);
                 //setting back to true will allow for the points to continue
                 // being shown when slider moves
