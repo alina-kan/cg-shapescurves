@@ -70,9 +70,9 @@ class Renderer {
     drawSlide3(ctx) {
         //draw name
         //A
-        this.drawLine({x: 100, y: 100}, {x: 175, y: 400}, [151, 82, 168, 255], ctx);
-        this.drawLine({x: 175, y: 400}, {x: 250, y: 100}, [151, 82, 168, 255], ctx);
-        this.drawLine({x: 137, y: 250}, {x: 212, y: 250}, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 100, y: 100}, {x: 175, y: 400}, [227, 141, 218, 255], ctx);
+        this.drawLine({x: 175, y: 400}, {x: 250, y: 100}, [227, 141, 218, 255], ctx);
+        this.drawLine({x: 137, y: 250}, {x: 212, y: 250}, [227, 141, 218, 255], ctx);
 
         //all line points for A
         let points = [];
@@ -84,7 +84,7 @@ class Renderer {
         points.push(pt1, pt2, pt3, pt4, pt5);
 
         //l
-        this.drawLine({x: 275, y: 350}, {x: 275, y: 100}, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 275, y: 350}, {x: 275, y: 100}, [227, 141, 218, 255], ctx);
 
         //line points for l
         let pt6 = {x: 275, y: 350};
@@ -92,8 +92,8 @@ class Renderer {
         points.push(pt6, pt7);
 
         //i
-        this.drawLine({x: 300, y: 250}, {x: 300, y: 100}, [151, 82, 168, 255], ctx);
-        this.drawCircle({x: 300, y: 275}, 3, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 300, y: 250}, {x: 300, y: 100}, [227, 141, 218, 255], ctx);
+        this.drawCircle({x: 300, y: 275}, 3, [227, 141, 218, 255], ctx);
 
         //line points for i
 
@@ -102,9 +102,9 @@ class Renderer {
         points.push(pt8, pt9);
 
         //n
-        this.drawLine({x: 325, y: 250}, {x: 325, y: 100}, [151, 82, 168, 255], ctx);
-        this.drawBezierCurve({x: 325, y: 200}, {x: 325, y: 270}, {x: 400, y: 270}, {x: 400, y: 200}, [151, 82, 168, 255], ctx);
-        this.drawLine({x: 400, y: 200}, {x: 400, y: 100}, [151, 82, 168, 255], ctx);
+        this.drawLine({x: 325, y: 250}, {x: 325, y: 100}, [227, 141, 218, 255], ctx);
+        this.drawBezierCurve({x: 325, y: 200}, {x: 325, y: 270}, {x: 400, y: 270}, {x: 400, y: 200}, [227, 141, 218, 255], ctx);
+        this.drawLine({x: 400, y: 200}, {x: 400, y: 100}, [227, 141, 218, 255], ctx);
 
         //line points for n
         let pt10 = {x: 325, y: 250};
@@ -114,11 +114,11 @@ class Renderer {
         points.push(pt10, pt11, pt12, pt13);
 
         //a - most complicated letter :/
-        this.drawBezierCurve({x: 475, y: 250}, {x: 400, y: 260}, {x: 400, y: 50}, {x: 487, y: 110}, [151, 82, 168, 255], ctx);
-        this.drawLine({x: 475, y: 250}, {x: 498, y: 230}, [151, 82, 168, 255], ctx);
-        this.drawLine({x: 487, y: 110}, {x: 498, y: 120}, [151, 82, 168, 255], ctx);
-        this.drawLine({x: 498, y: 240}, {x: 498, y: 120}, [151, 82, 168, 255], ctx);
-        this.drawBezierCurve({x: 498, y: 120}, {x: 498, y: 100}, {x: 525, y: 100}, {x: 525, y: 105}, [151, 82, 168, 255], ctx);
+        this.drawBezierCurve({x: 475, y: 250}, {x: 400, y: 260}, {x: 400, y: 50}, {x: 487, y: 110}, [227, 141, 218, 255], ctx);
+        this.drawLine({x: 475, y: 250}, {x: 498, y: 230}, [227, 141, 218, 255], ctx);
+        this.drawLine({x: 487, y: 110}, {x: 498, y: 120}, [227, 141, 218, 255], ctx);
+        this.drawLine({x: 498, y: 240}, {x: 498, y: 120}, [227, 141, 218, 255], ctx);
+        this.drawBezierCurve({x: 498, y: 120}, {x: 498, y: 100}, {x: 525, y: 100}, {x: 525, y: 105}, [227, 141, 218, 255], ctx);
 
         //line points for a
         let pt14 = {x: 475, y: 250};
